@@ -1,0 +1,7 @@
+apiVersion: v2
+name: kangal-local
+version: 1.0.0
+dependencies:
+  - name: kangal
+    version: "~x.x.x"
+    repository: "https://hellofresh.github.io/kangal"
