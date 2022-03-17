@@ -5,7 +5,8 @@ init-k6:
 init-kangal:
 	minikube start
 	helm repo add kangal https://hellofresh.github.io/kangal
-	helm install kangal kangal/kangal
+	helm dependency build kangal-local-chart
+	helm install kangal kangal-local-chart
 	helm install simple-http simple-http-chart
 
 run-example:

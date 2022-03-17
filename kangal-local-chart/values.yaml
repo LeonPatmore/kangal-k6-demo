@@ -2,6 +2,14 @@ kangal:
   secrets:
     AWS_ACCESS_KEY_ID:
     AWS_SECRET_ACCESS_KEY:
+  configMap:
     AWS_BUCKET_NAME: kangal-reports-leon
     AWS_DEFAULT_REGION: eu-west-2
     AWS_ENDPOINT_URL: s3.eu-west-2.amazonaws.com
+  proxy:
+    ingress:
+      enabled: false
+  openapi-ui:
+    enabled: false
+    ingress:
+      enabled: false
