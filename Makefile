@@ -16,3 +16,9 @@ install-kangal:
 
 run-example:
 	cat example.js | docker run --network kangal -i grafana/k6 run --vus 10 --duration 10s -
+
+run-sqs-example:
+	cat sqs_example.js | docker run --network kangal -i k6-custom run --vus 10 --duration 10s -
+
+build-k6:
+	docker build . -t k6-custom:latest
