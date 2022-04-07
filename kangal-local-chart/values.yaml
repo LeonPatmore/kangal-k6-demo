@@ -9,3 +9,6 @@ kangal:
     enabled: false
     ingress:
       enabled: false
+  configMap:
+    K6_IMAGE_NAME: leonpatmore/k6-sqs
+    K6_IMAGE_TAG: latest

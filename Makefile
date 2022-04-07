@@ -12,6 +12,7 @@ init-kangal:
 	helm install simple-http simple-http-chart
 
 install-kangal:
+	cd kangal-local-chart && helm dependency build
 	helm upgrade --create-namespace --namespace kangal --install kangal kangal-local-chart --set kangal.secrets.AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} --set kangal.secrets.AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} --set kangal.configMap.AWS_DEFAULT_REGION=${REGION} --set kangal.configMap.AWS_BUCKET_NAME=${BUCKET_NAME}
 
 run-example:
@@ -21,4 +22,5 @@ run-sqs-example:
 	cat sqs_example.js | docker run --network kangal -i k6-custom run --vus 10 --duration 10s -
 
 build-k6:
-	docker build . -t k6-custom:latest
+	docker build . -t leonpatmore/k6-sqs:latest
+	docker push leonpatmore/k6-sqs:latest
