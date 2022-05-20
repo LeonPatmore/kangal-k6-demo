@@ -1,7 +1,6 @@
 FROM szkiba/xk6bundler as builder
-ENV XK6BUNDLER_WITH=github.com/mridehalgh/xk6-sqs@latest
 ENV XK6BUNDLER_PLATFORM=linux/amd64
-RUN xk6bundler
+RUN xk6bundler --with=github.com/mostafa/xk6-kafka@latest --with=github.com/mridehalgh/xk6-sqs@latest
 
 FROM alpine:3.13
 RUN apk add --no-cache ca-certificates && \
