@@ -10,6 +10,7 @@ init-kangal:
 	helm dependency build kangal-local-chart
 	helm upgrade --create-namespace --namespace kangal --install kangal kangal-local-chart --set kangal.secrets.AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} --set kangal.secrets.AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} --set kangal.configMap.AWS_DEFAULT_REGION=${REGION} --set kangal.configMap.AWS_BUCKET_NAME=${BUCKET_NAME}
 	helm install simple-http simple-http-chart
+	kubectl -n kangal port-forward service/kangal-proxy 12567:80
 
 install-kangal:
 	cd kangal-local-chart && helm dependency build
